@@ -1,0 +1,122 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f2f4f8;
+}
+
+.login-form {
+  width: 320px;
+  margin: 80px auto;
+  padding: 50px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  height: auto;
+}
+
+.login-form h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: 800;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #555;
+}
+
+.form-group input {
+  width: 90%;
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 14px;
+}
+
+.form-group input:focus {
+  border-color: #4a90e2;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background-color: #357abd;
+}
+
+h3 {
+  text-align: center;
+  margin-top: 10px;
+  color: #333;
+  font-weight: normal;
+}
+.register-link {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  color: #3f4143;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.form-group select {
+  width: 95%;
+  padding: 8px 10px;
+
+  font-size: 14px;
+  color: #333;
+
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%234a90e2'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 14px;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.form-group select:hover {
+  border-color: #4a90e2;
+}
+
+.form-group select:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 4px rgba(74, 144, 226, 0.5);
+}
+
+.form-group select option {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.form-group select option[value=""] {
+  color: #9ca3af;
+}
