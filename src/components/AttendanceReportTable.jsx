@@ -11,19 +11,16 @@ const AttendanceReportTable = () => {
     return <p className="no-data">No attendance records available</p>;
   }
 
-  // Filter records based on user role
   let filteredRecords = state.records;
   if (storedUser && storedUser.role !== "admin") {
     filteredRecords = state.records.filter(record => record.name === storedUser.username);
   }
 
-  // ✅ SORT: latest updated first
   const sortedRecords = [...filteredRecords].sort((a, b) => {
-    // Active session first
+   
     if (!a.checkOut && b.checkOut) return -1;
     if (a.checkOut && !b.checkOut) return 1;
 
-    // Latest date first
     return new Date(b.date) - new Date(a.date);
   });
 
