@@ -1,0 +1,104 @@
+/* Admin Attendance Panel Styles */
+
+.admin-attendance-panel {
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 30px;
+  max-width: 600px;
+  margin: 40px auto;
+  box-shadow: var(--card-shadow);
+  animation: fadeIn 0.6s var(--transition-normal);
+}
+
+.admin-attendance-panel:hover {
+  border-color: var(--border-hover);
+}
+
+.admin-attendance-panel h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 0;
+  margin-bottom: 14px;
+  letter-spacing: 0.02em;
+}
+
+.admin-attendance-panel p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-top: 0;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.admin-actions button {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px 24px;
+  border-radius: var(--border-radius-sm);
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+/* Export button */
+.export-btn {
+  background: var(--accent-gradient);
+  color: #ffffff;
+  box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+.export-btn:hover {
+  background: var(--accent-gradient-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(99, 102, 241, 0.35);
+}
+
+.export-btn:active {
+  transform: translateY(0);
+}
+
+/* Clear button */
+.clear-btn {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #ffffff;
+  box-shadow: 0 4px 12px var(--danger-glow);
+}
+
+.clear-btn:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(239, 68, 68, 0.35);
+}
+
+.clear-btn:active {
+  transform: translateY(0);
+}
+
+/* Small screens styling */
+@media (max-width: 480px) {
+  .admin-attendance-panel {
+    margin: 20px 15px;
+    padding: 20px;
+  }
+
+  .admin-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .admin-actions button {
+    width: 100%;
+  }
+}

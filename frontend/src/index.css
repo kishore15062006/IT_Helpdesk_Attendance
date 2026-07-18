@@ -1,0 +1,349 @@
+:root {
+  /* Cohesive Theme Colors - Sleek Professional Dark Slate Theme */
+  --bg-primary: #0b0f19;
+  --bg-secondary: #111827;
+  --bg-tertiary: #1f2937;
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --primary-glow: rgba(99, 102, 241, 0.15);
+  
+  --success: #10b981;
+  --success-hover: #059669;
+  --success-glow: rgba(16, 185, 129, 0.15);
+  
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --danger-glow: rgba(239, 68, 68, 0.15);
+  
+  --warning: #f59e0b;
+  --warning-hover: #d97706;
+  --warning-glow: rgba(245, 158, 11, 0.15);
+
+  --info: #06b6d4;
+  --info-hover: #0891b2;
+  --info-glow: rgba(6, 182, 212, 0.15);
+  
+  --accent-gradient: linear-gradient(135deg, #6366f1, #8b5cf6);
+  --accent-gradient-hover: linear-gradient(135deg, #4f46e5, #7c3aed);
+  
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.15);
+  
+  --card-bg: rgba(17, 24, 39, 0.55);
+  --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  --glass-backdrop: blur(12px);
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 18px;
+  
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s ease;
+
+  /* Custom input components default (Dark mode) */
+  --input-bg: rgba(31, 41, 55, 0.6);
+  --input-hover-bg: rgba(31, 41, 55, 0.85);
+  --header-bg: rgba(17, 24, 39, 0.75);
+}
+
+:root[data-theme="light"] {
+  /* Cohesive Theme Colors - Sleek Professional Light Slate Theme */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-glow: rgba(79, 70, 229, 0.1);
+  
+  --success: #10b981;
+  --success-hover: #059669;
+  --success-glow: rgba(16, 185, 129, 0.1);
+  
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --danger-glow: rgba(239, 68, 68, 0.1);
+  
+  --warning: #d97706;
+  --warning-hover: #b45309;
+  --warning-glow: rgba(245, 158, 11, 0.1);
+
+  --info: #0284c7;
+  --info-hover: #0369a1;
+  --info-glow: rgba(2, 132, 199, 0.1);
+  
+  --accent-gradient: linear-gradient(135deg, #4f46e5, #7c3aed);
+  --accent-gradient-hover: linear-gradient(135deg, #4338ca, #6d28d9);
+  
+  --border-color: rgba(15, 23, 42, 0.08);
+  --border-hover: rgba(15, 23, 42, 0.14);
+  
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-shadow: 0 10px 30px 0 rgba(15, 23, 42, 0.05);
+  --glass-backdrop: blur(12px);
+
+  /* Custom input components light mode overrides */
+  --input-bg: rgba(255, 255, 255, 0.9);
+  --input-hover-bg: rgba(255, 255, 255, 1);
+  --header-bg: rgba(255, 255, 255, 0.85);
+}
+
+/* Theme Toggle Button Style in Navbar */
+.theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--primary);
+  box-shadow: 0 0 10px var(--primary-glow);
+  transform: scale(1.05);
+}
+
+/* Floating Theme Toggle Button for Login/Registration/Landing Pages */
+.theme-floating-btn {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.25rem;
+  cursor: pointer;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition-normal);
+  z-index: 999;
+}
+
+.theme-floating-btn:hover {
+  transform: translateY(-2px) rotate(15deg);
+  border-color: var(--primary);
+  box-shadow: 0 0 15px var(--primary-glow);
+}
+
+/* Global popup notification toast */
+.custom-popup-toast {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--border-color);
+  animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 9999;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.custom-popup-toast.success {
+  background: rgba(16, 185, 129, 0.95);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.custom-popup-toast.error {
+  background: rgba(239, 68, 68, 0.95);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.popup-icon {
+  width: 22px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #ffffff;
+}
+
+.popup-message {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+.popup-close {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 8px;
+  padding: 0;
+  transition: var(--transition-fast);
+}
+
+.popup-close:hover {
+  color: #ffffff;
+}
+
+
+/* Global resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: var(--border-radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+/* Global Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(99, 102, 241, 0.45);
+  }
+}
+
+/* Basic Element styling reset to fit dark slate theme */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+  font-family: inherit;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: var(--border-radius-sm);
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  transition: var(--transition-fast);
+  outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+input:disabled,
+select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: var(--text-primary);
+}
+
+/* Glassmorphic card styling utilities */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--border-radius-lg);
+  padding: 30px;
+  animation: fadeIn 0.6s var(--transition-normal);
+}
+
+.gradient-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

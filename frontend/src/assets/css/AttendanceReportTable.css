@@ -1,0 +1,121 @@
+/* Attendance Report Table CSS - Sleek Modern Glassmorphic Grid */
+
+.attendance-report {
+  width: 100%;
+  animation: fadeIn 0.6s var(--transition-normal);
+}
+
+.attendance-report h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 0;
+  margin-bottom: 22px;
+  letter-spacing: 0.02em;
+}
+
+.attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.attendance-table thead {
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.attendance-table thead th {
+  color: var(--text-primary);
+  padding: 16px 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.attendance-table tbody tr {
+  border-bottom: 1px solid var(--border-color);
+  transition: var(--transition-fast);
+}
+
+.attendance-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.attendance-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.attendance-table td {
+  padding: 14px 20px;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.attendance-table tbody tr:hover td {
+  color: #ffffff;
+}
+
+/* Status Pill Badges with Glows */
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-block;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.status-full {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.05);
+}
+
+.status-half {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.05);
+}
+
+.status-absent {
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.05);
+}
+
+.no-data {
+  padding: 50px;
+  text-align: center;
+  color: var(--text-muted);
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  font-size: 0.95rem;
+  font-style: italic;
+  box-shadow: var(--card-shadow);
+  animation: fadeIn 0.6s var(--transition-normal);
+}
+
+/* Responsive Grid styling */
+@media (max-width: 768px) {
+  .attendance-table {
+    display: block;
+    overflow-x: auto;
+  }
+}

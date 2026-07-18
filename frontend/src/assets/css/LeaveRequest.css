@@ -1,0 +1,236 @@
+/* Leave Request Form and Status Dashboard Styles */
+
+.leave-container {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 40px auto;
+  animation: fadeIn 0.6s var(--transition-normal);
+}
+
+/* Apply Leave Glass Card */
+.leave-apply {
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 30px;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition-normal);
+}
+
+.leave-apply:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+}
+
+.leave-apply h3 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+.leave-apply label {
+  display: block;
+  margin: 16px 0 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.leave-apply input,
+.leave-apply select,
+.leave-apply textarea {
+  width: 100%;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  color: var(--text-primary);
+  padding: 11px 14px;
+  font-size: 0.95rem;
+  transition: var(--transition-fast);
+}
+
+.leave-apply input:hover,
+.leave-apply select:hover,
+.leave-apply textarea:hover {
+  border-color: var(--border-hover);
+}
+
+.leave-apply input:focus,
+.leave-apply select:focus,
+.leave-apply textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+.leave-apply select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%236366f1'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  cursor: pointer;
+}
+
+.leave-apply select option {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.leave-apply textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.leave-apply button {
+  margin-top: 25px;
+  width: 100%;
+  padding: 13px;
+  background: var(--accent-gradient);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 15px var(--primary-glow);
+  transition: var(--transition-normal);
+}
+
+.leave-apply button:hover {
+  background: var(--accent-gradient-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.35);
+}
+
+.leave-apply button:active {
+  transform: translateY(0);
+}
+
+/* Leave Status Grid Column */
+.leave-status {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
+}
+
+.pending,
+.decision {
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 24px;
+  box-shadow: var(--card-shadow);
+  max-height: 380px;
+  overflow-y: auto;
+  transition: var(--transition-normal);
+}
+
+.pending:hover,
+.decision:hover {
+  border-color: var(--border-hover);
+}
+
+.pending h4,
+.decision h4 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+  letter-spacing: 0.02em;
+}
+
+/* Individual Leave Cards */
+.pending-card,
+.decision-card {
+  background: rgba(128, 128, 128, 0.04);
+  padding: 14px 18px;
+  border-radius: var(--border-radius-md);
+  margin-bottom: 12px;
+  border: 1px solid var(--border-color);
+  transition: var(--transition-fast);
+}
+
+.pending-card:hover,
+.decision-card:hover {
+  background: rgba(128, 128, 128, 0.08);
+  border-color: var(--border-hover);
+}
+
+.pending-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.decision-card p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+
+.date-range {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.admin-comment {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  font-style: italic;
+  padding-left: 4px;
+}
+
+/* Status Pill Badges */
+.status-pill {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.status-pill.pending {
+  background: var(--warning-glow);
+  color: var(--warning);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.status-pill.approved {
+  background: var(--success-glow);
+  color: var(--success);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.status-pill.rejected {
+  background: var(--danger-glow);
+  color: var(--danger);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .leave-container {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,140 @@
+/* Leave Approval Dashboard Styles */
+
+.approval-container {
+  max-width: 900px;
+  margin: 40px auto;
+  animation: fadeIn 0.6s var(--transition-normal);
+}
+
+.approval-container h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 0;
+  margin-bottom: 24px;
+  letter-spacing: 0.02em;
+}
+
+.leave-card {
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition-normal);
+}
+
+.leave-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+.leave-card p {
+  margin: 8px 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.leave-card p strong {
+  font-size: 1.15rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.leave-card textarea {
+  width: 100%;
+  margin-top: 14px;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  color: var(--text-primary);
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  min-height: 80px;
+  resize: vertical;
+  transition: var(--transition-fast);
+  outline: none;
+}
+
+.leave-card textarea:hover {
+  border-color: var(--border-hover);
+}
+
+.leave-card textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+.leave-card button {
+  margin-top: 14px;
+  margin-right: 12px;
+  padding: 9px 18px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: var(--border-radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+/* Approve Button Styling */
+.leave-card button:first-of-type {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  box-shadow: 0 4px 12px var(--success-glow);
+}
+
+.leave-card button:first-of-type:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(16, 185, 129, 0.35);
+}
+
+/* Reject Button Styling */
+.leave-card button:last-of-type {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #ffffff;
+  box-shadow: 0 4px 12px var(--danger-glow);
+}
+
+.leave-card button:last-of-type:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(239, 68, 68, 0.35);
+}
+
+/* Status Badges */
+.status-pill {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-left: 6px;
+}
+
+.status-pill.approved {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.status-pill.rejected {
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+@media (max-width: 768px) {
+  .leave-card button {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}

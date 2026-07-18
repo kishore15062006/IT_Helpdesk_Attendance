@@ -1,0 +1,100 @@
+/* Performance Analysis Dashboard Styles */
+
+.performance-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 30px;
+  box-shadow: var(--card-shadow);
+  animation: fadeIn 0.6s var(--transition-normal);
+}
+
+.performance-container:hover {
+  border-color: var(--border-hover);
+}
+
+.performance-container h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 0;
+  margin-bottom: 12px;
+  letter-spacing: 0.02em;
+}
+
+.performance-container h4 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 30px;
+  margin-bottom: 14px;
+}
+
+.performance-container p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+.performance-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 18px;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.performance-container table th,
+.performance-container table td {
+  padding: 14px 18px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+}
+
+.performance-container table th {
+  background-color: rgba(255, 255, 255, 0.03);
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.performance-container table tbody tr {
+  transition: var(--transition-fast);
+}
+
+.performance-container table tbody tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.01);
+}
+
+.performance-container table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.performance-container table tbody tr:hover td {
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .performance-container {
+    padding: 20px;
+  }
+
+  .performance-container table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .performance-container table th,
+  .performance-container table td {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+}

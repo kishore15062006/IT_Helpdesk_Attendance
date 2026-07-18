@@ -1,0 +1,298 @@
+/* Dashboard Navigation and Profile Drawer CSS */
+
+.employee-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--header-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border-bottom: 1px solid var(--border-color);
+  padding: 16px 40px;
+  color: var(--text-primary);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition-normal);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  background: var(--accent-gradient);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.15rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.2);
+  transition: var(--transition-normal);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.avatar:hover {
+  transform: scale(1.08) rotate(5deg);
+  border-color: var(--primary);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+}
+
+.employee-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+}
+
+.logout-btn {
+  margin-left: 12px;
+  padding: 7px 16px;
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.logout-btn:hover {
+  background-color: var(--danger);
+  color: #ffffff;
+  border-color: var(--danger);
+  box-shadow: 0 0 15px var(--danger-glow);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-links a {
+  padding: 8px 16px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-fast);
+}
+
+.nav-links a:hover {
+  color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Active Link State matching current route */
+.nav-links a.active,
+.nav-links a[aria-current="page"] {
+  color: #ffffff;
+  background-color: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  box-shadow: inset 0 0 8px rgba(99, 102, 241, 0.05);
+}
+
+/* Drawer overlays */
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 15, 25, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 99;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Drawer Component Styles */
+.profile-drawer {
+  position: fixed;
+  top: 0;
+  left: -380px;
+  width: 380px;
+  height: 100%;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
+  transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-drawer.open {
+  left: 0;
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(15, 23, 42, 0.3);
+}
+
+.drawer-header h3 {
+  color: var(--text-primary);
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.drawer-header button {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 22px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.drawer-header button:hover {
+  color: var(--text-primary);
+  background-color: rgba(128, 128, 128, 0.15);
+}
+
+.drawer-body {
+  padding: 24px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.drawer-body label {
+  display: block;
+  margin-top: 18px;
+  margin-bottom: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.drawer-body input,
+.drawer-body select {
+  width: 100%;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  color: var(--text-primary);
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  transition: var(--transition-fast);
+  outline: none;
+}
+
+.drawer-body input:hover,
+.drawer-body select:hover {
+  border-color: var(--border-hover);
+  background-color: var(--input-hover-bg);
+}
+
+.drawer-body input:focus,
+.drawer-body select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+.drawer-body select option {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.drawer-body input:disabled {
+  opacity: 0.55;
+  background-color: rgba(128, 128, 128, 0.05);
+  cursor: not-allowed;
+  border-color: var(--border-color);
+}
+
+.drawer-footer {
+  padding: 24px;
+  border-top: 1px solid var(--border-color);
+  background: rgba(15, 23, 42, 0.3);
+}
+
+.save-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--accent-gradient);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px var(--primary-glow);
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.save-btn:hover {
+  background: var(--accent-gradient-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(99, 102, 241, 0.35);
+}
+
+.save-btn:active {
+  transform: translateY(0);
+}
+
+/* Dashboard main content area wrapper */
+.employee-content {
+  max-width: 1300px;
+  margin: 30px auto;
+  padding: 0 30px;
+  animation: fadeIn 0.6s var(--transition-normal);
+}
+
+/* Adjustments for responsive viewport breakpoints */
+@media (max-width: 1024px) {
+  .employee-navbar {
+    padding: 14px 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .nav-left {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .nav-links {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    justify-content: flex-start;
+  }
+  
+  .nav-links a {
+    white-space: nowrap;
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-drawer {
+    width: 100%;
+    left: -100%;
+  }
+}

@@ -1,0 +1,390 @@
+/* Ticket Component Styles - Modern Glassmorphic Dark Layout */
+
+.ticket-container {
+  max-width: 900px;
+  margin: 40px auto;
+  animation: fadeIn 0.6s var(--transition-normal);
+}
+
+.ticket-container h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 0;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 14px;
+  letter-spacing: 0.02em;
+}
+
+.ticket-form {
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 30px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 35px;
+  transition: var(--transition-normal);
+}
+
+.ticket-form:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+}
+
+.ticket-form select,
+.ticket-form textarea,
+.ticket-form input {
+  width: 100%;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  color: var(--text-primary);
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  transition: var(--transition-fast);
+  outline: none;
+}
+
+.ticket-form select:hover,
+.ticket-form textarea:hover,
+.ticket-form input:hover {
+  border-color: var(--border-hover);
+}
+
+.ticket-form select:focus,
+.ticket-form textarea:focus,
+.ticket-form input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+.ticket-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%236366f1'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  cursor: pointer;
+  padding-right: 40px;
+}
+
+.ticket-form select option {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.ticket-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.ticket-btn {
+  align-self: flex-start;
+  padding: 12px 28px;
+  background: var(--accent-gradient);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 15px var(--primary-glow);
+  transition: var(--transition-normal);
+}
+
+.ticket-btn:hover {
+  background: var(--accent-gradient-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.35);
+}
+
+.ticket-btn:active {
+  transform: translateY(0);
+}
+
+/* Individual Ticket Cards */
+.ticket-card {
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--border-radius-md);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition-normal);
+}
+
+.ticket-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+.ticket-card p {
+  margin: 8px 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.ticket-card b {
+  color: var(--text-primary);
+}
+
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.ticket-description {
+  margin: 14px 0 !important;
+  line-height: 1.5;
+  color: var(--text-primary) !important;
+  font-size: 1rem !important;
+  white-space: pre-wrap;
+  background: rgba(128, 128, 128, 0.05);
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+}
+
+/* Priority Indicators */
+.priority-badge {
+  padding: 4px 12px;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.priority-badge.low {
+  background: var(--info-glow);
+  color: var(--info);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+}
+
+.priority-badge.medium {
+  background: var(--warning-glow);
+  color: var(--warning);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.priority-badge.high {
+  background: var(--danger-glow);
+  color: var(--danger);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Status Badges */
+.status {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.status.open {
+  background: var(--danger-glow);
+  color: var(--danger) !important;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.status.in\ progress {
+  background: var(--warning-glow);
+  color: var(--warning) !important;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.status.resolved {
+  background: var(--success-glow);
+  color: var(--success) !important;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+/* Admin Controls Card Sections */
+.admin-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-color);
+}
+
+.admin-controls select,
+.admin-controls textarea {
+  width: 100%;
+}
+
+.admin-controls textarea {
+  min-height: 80px;
+}
+
+.delete-btn {
+  margin-top: 14px;
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 8px 18px;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: var(--transition-fast);
+}
+
+.delete-btn:hover {
+  background: var(--danger);
+  color: #ffffff;
+  border-color: var(--danger);
+  box-shadow: 0 0 15px var(--danger-glow);
+}
+
+.empty-text {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-style: italic;
+  padding: 40px;
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--card-shadow);
+  animation: fadeIn 0.6s var(--transition-normal);
+}
+
+@media (max-width: 768px) {
+  .ticket-form {
+    padding: 20px;
+  }
+  
+  .ticket-btn {
+    width: 100%;
+  }
+}
+
+/* Action button rows in ticket controls */
+.action-buttons-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  width: 100%;
+}
+
+.ticket-submit-btn {
+  flex: 1;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px var(--success-glow);
+  transition: var(--transition-normal);
+}
+
+.ticket-submit-btn:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(16, 185, 129, 0.35);
+}
+
+.ticket-submit-btn:active {
+  transform: translateY(0);
+}
+
+.ticket-delete-btn {
+  flex: 1;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px var(--danger-glow);
+  transition: var(--transition-normal);
+}
+
+.ticket-delete-btn:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(239, 68, 68, 0.35);
+}
+
+.ticket-delete-btn:active {
+  transform: translateY(0);
+}
+
+/* Reusable custom popup toast notification */
+.custom-popup-toast {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--border-color);
+  animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 9999;
+}
+
+.custom-popup-toast.success {
+  background: rgba(16, 185, 129, 0.9);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.custom-popup-toast.error {
+  background: rgba(239, 68, 68, 0.9);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.popup-icon {
+  width: 22px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #ffffff;
+}
+
+.popup-message {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+@media (max-width: 480px) {
+  .action-buttons-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

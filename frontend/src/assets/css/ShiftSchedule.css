@@ -1,0 +1,309 @@
+/* Shift Schedule and Management Styles */
+
+.shift-schedule-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  animation: fadeIn 0.6s var(--transition-normal);
+}
+
+.shift-schedule-container h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 0;
+  margin-bottom: 24px;
+  letter-spacing: 0.02em;
+}
+
+.shift-schedule-container h3 {
+  color: var(--text-primary);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+.shift-schedule-container h4 {
+  margin: 22px 0 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Create Shift Glass Card Form */
+.shift-schedule-container form {
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 30px;
+  margin-bottom: 35px;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition-normal);
+}
+
+.shift-schedule-container form:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+}
+
+.shift-schedule-container form input,
+.shift-schedule-container form select {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  color: var(--text-primary);
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  margin: 6px;
+  width: calc(33.33% - 16px);
+  min-width: 180px;
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+.shift-schedule-container form input:hover,
+.shift-schedule-container form select:hover {
+  border-color: var(--border-hover);
+}
+
+.shift-schedule-container form input:focus,
+.shift-schedule-container form select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+/* Time inputs adjustments */
+.shift-schedule-container form input[type="time"] {
+  font-family: inherit;
+  cursor: text;
+}
+
+/* Custom styled checkbox labels */
+.shift-schedule-container form label {
+  display: inline-flex;
+  align-items: center;
+  margin: 6px 16px 6px 0;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+  transition: var(--transition-fast);
+}
+
+.shift-schedule-container form label:hover {
+  color: var(--text-primary);
+}
+
+.shift-schedule-container form input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: rgba(31, 41, 55, 0.6);
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  margin: 0 8px 0 0;
+  padding: 0;
+  transition: var(--transition-fast);
+}
+
+.shift-schedule-container form input[type="checkbox"]::before {
+  content: "✔";
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: bold;
+  transform: scale(0);
+  transition: transform 0.15s ease-in-out;
+}
+
+.shift-schedule-container form input[type="checkbox"]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+  box-shadow: 0 0 8px var(--primary-glow);
+}
+
+.shift-schedule-container form input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+.shift-schedule-container button {
+  background: var(--accent-gradient);
+  color: #ffffff;
+  border: none;
+  padding: 11px 24px;
+  border-radius: var(--border-radius-sm);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px var(--primary-glow);
+  transition: var(--transition-normal);
+  margin-top: 15px;
+}
+
+.shift-schedule-container button:hover {
+  background: var(--accent-gradient-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(99, 102, 241, 0.35);
+}
+
+/* Shift Listing Glass Cards */
+.shift-card {
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition-normal);
+}
+
+.shift-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+.shift-card h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 14px 0;
+  font-size: 1.25rem;
+  color: #ffffff;
+}
+
+.shift-card h3 button {
+  margin: 0;
+  padding: 6px 14px;
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--border-radius-sm);
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition: var(--transition-fast);
+}
+
+.shift-card h3 button:hover {
+  background: var(--danger);
+  color: #ffffff;
+  border-color: var(--danger);
+  box-shadow: 0 0 10px var(--danger-glow);
+}
+
+.shift-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin: 10px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.shift-card ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 10px 0 0 0;
+}
+
+.shift-card li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 8px 12px;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.shift-card li button {
+  margin: 0 0 0 auto;
+  padding: 5px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.shift-card li button:hover {
+  background: var(--danger);
+  color: #ffffff;
+  border-color: var(--danger);
+  box-shadow: 0 0 8px var(--danger-glow);
+}
+
+.shift-card li select {
+  margin-left: 10px;
+  padding: 5px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+}
+
+.shift-card li select:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+.shift-card p[style*="color: red"],
+.shift-card p.no-employees-alert {
+  font-weight: 600;
+  color: var(--danger) !important;
+  border-bottom: none;
+  padding-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (max-width: 768px) {
+  .shift-schedule-container form input,
+  .shift-schedule-container form select {
+    width: 100%;
+    margin: 6px 0;
+  }
+
+  .shift-schedule-container form label {
+    display: block;
+    margin: 6px 0;
+  }
+
+  .shift-card h3 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .shift-card h3 button {
+    width: 100%;
+  }
+
+  .shift-card li {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .shift-card li button,
+  .shift-card li select {
+    width: 100%;
+    margin-left: 0 !important;
+  }
+}
