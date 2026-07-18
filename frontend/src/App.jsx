@@ -21,7 +21,7 @@ import AdminTickets from "./components/AdminTickets";
 const App = () => {
   return (
     <AttendanceProvider>
-    <BrowserRouter basename="/">
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
 
         <Route path="/" element={<LandingPage />} />

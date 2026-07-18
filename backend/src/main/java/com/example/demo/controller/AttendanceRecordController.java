@@ -56,6 +56,34 @@ public class AttendanceRecordController {
         return ResponseEntity.ok(saved);
     }
 
+    private int parseWorkingHoursToMinutes(String workingHours) {
+        if (workingHours == null || workingHours.isEmpty() || "—".equals(workingHours)) {
+            return 0;
+        }
+        try {
+            int hours = 0;
+            int minutes = 0;
+            if (workingHours.contains("h")) {
+                String[] parts = workingHours.split("h");
+                hours = Integer.parseInt(parts[0].trim());
+                if (parts.length > 1 && parts[1].contains("m")) {
+                    minutes = Integer.parseInt(parts[1].replace("m", "").trim());
+                }
+            } else if (workingHours.contains("m")) {
+                minutes = Integer.parseInt(workingHours.replace("m", "").trim());
+            }
+            return hours * 60 + minutes;
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    private String formatMinutesToWorkingHours(int totalMinutes) {
+        int hours = totalMinutes / 60;
+        int minutes = totalMinutes % 60;
+        return hours + "h " + minutes + "m";
+    }
+
     @PostMapping("/check-out")
     public ResponseEntity<?> checkOut(@RequestBody CheckoutRequest request) {
         Optional<AttendanceRecord> recordOpt = attendanceRecordRepository.findById(request.getId());
@@ -83,16 +111,42 @@ public class AttendanceRecordController {
                 outMinutes += 24 * 60; // overnight shift
             }
 
-            int diff = outMinutes - inMinutes;
-            int hours = diff / 60;
-            int minutes = diff % 60;
+            int currentSessionMinutes = outMinutes - inMinutes;
 
-            record.setWorkingHours(hours + "h " + minutes + "m");
+            String todayDatePrefix = (record.getDate() != null && record.getDate().length() >= 10) 
+                ? record.getDate().substring(0, 10) 
+                : new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
 
+            List<AttendanceRecord> userRecords = attendanceRecordRepository.findByName(record.getName());
+            
+            int cumulativeMinutes = currentSessionMinutes;
+            String originalFirstCheckIn = record.getCheckIn();
+
+            for (AttendanceRecord r : userRecords) {
+                if (r.getId().equals(record.getId())) {
+                    continue;
+                }
+                if (r.getDate() != null && r.getDate().startsWith(todayDatePrefix)) {
+                    cumulativeMinutes += parseWorkingHoursToMinutes(r.getWorkingHours());
+                    
+                    // Track the earliest check-in time on that day
+                    if (r.getCheckIn() != null && (originalFirstCheckIn == null || r.getCheckIn().compareTo(originalFirstCheckIn) < 0)) {
+                        originalFirstCheckIn = r.getCheckIn();
+                    }
+                    
+                    // Delete the previous record!
+                    attendanceRecordRepository.delete(r);
+                }
+            }
+
+            record.setCheckIn(originalFirstCheckIn); // Keep the first check-in permanently
+            record.setWorkingHours(formatMinutesToWorkingHours(cumulativeMinutes));
+
+            int totalHours = cumulativeMinutes / 60;
             String baseStatus;
-            if (hours >= 8) {
+            if (totalHours >= 8) {
                 baseStatus = "Full Day";
-            } else if (hours >= 4) {
+            } else if (totalHours >= 4) {
                 baseStatus = "Half Day";
             } else {
                 baseStatus = "Absent";

@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import "../assets/css/LeaveRequest.css"
 import { api } from "../services/api";
 import { useTheme } from "../context/ThemeContext";
+import { useAuth } from "../context/AuthContext";
 
 const LeaveRequest = () => {
-  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+  const { user } = useAuth();
   const { showNotification } = useTheme();
 
   const [fromDate, setFromDate] = useState("");

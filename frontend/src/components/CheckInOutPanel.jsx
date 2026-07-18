@@ -5,12 +5,12 @@ import "react-calendar/dist/Calendar.css";
 import "../assets/css/CheckInOutPanel.css";
 import { api } from "../services/api";
 import { useTheme } from "../context/ThemeContext";
+import { useAuth } from "../context/AuthContext";
 
 const CheckInOutPanel = () => {
   const { state, dispatch, fetchRecords } = useContext(AttendanceContext);
   const { showNotification } = useTheme();
-
-  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  const { user: loggedInUser } = useAuth();
   const name = loggedInUser?.username || "Employee";
 
   const [shift, setShift] = useState("Morning");

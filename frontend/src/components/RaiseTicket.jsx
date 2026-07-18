@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import "../assets/css/TicketStyles.css";
 import { api } from "../services/api";
 import { useTheme } from "../context/ThemeContext";
+import { useAuth } from "../context/AuthContext";
 
 const RaiseTicket = () => {
-  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  const { user: loggedInUser } = useAuth();
   const { showNotification } = useTheme();
 
   const [issueType, setIssueType] = useState("");

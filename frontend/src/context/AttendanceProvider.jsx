@@ -2,16 +2,17 @@ import { useReducer, useEffect } from "react";
 import { AttendanceContext } from "./AttendanceContext";
 import { attendanceReducer } from "../reducer/attendanceReducer";
 import { api } from "../services/api";
+import { useAuth } from "./AuthContext";
 
 const initialState = {
   records: []
 };
 
 const AttendanceProvider = ({ children }) => {
+  const { user } = useAuth();
   const [state, dispatch] = useReducer(attendanceReducer, initialState);
 
   const fetchRecords = async () => {
-    const user = JSON.parse(localStorage.getItem("loggedInUser"));
     if (!user) return;
     try {
       let data;
@@ -32,7 +33,7 @@ const AttendanceProvider = ({ children }) => {
     return () => {
       window.removeEventListener("focus", fetchRecords);
     };
-  }, []);
+  }, [user]);
 
   return (
     <AttendanceContext.Provider value={{ state, dispatch, fetchRecords }}>

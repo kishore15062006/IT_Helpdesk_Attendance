@@ -1,8 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../assets/css/login.css";
 import { api } from "../services/api";
 import { useTheme } from "../context/ThemeContext";
+import { useAuth } from "../context/AuthContext";
 
 function LoginForm() {
   const usernameInputRef = useRef(null);
@@ -10,6 +11,32 @@ function LoginForm() {
   const [role, setRole] = useState("");
   const navigate = useNavigate();
   const { showNotification, theme, toggleTheme } = useTheme();
+  const { login, isAuthenticated, role: userRole, loading } = useAuth();
+
+  useEffect(() => {
+    if (!loading && isAuthenticated) {
+      if (userRole === "admin") {
+        navigate("/adminDashboard", { replace: true });
+      } else {
+        navigate("/employeeDashboard", { replace: true });
+      }
+    }
+  }, [loading, isAuthenticated, userRole, navigate]);
+
+  if (loading || isAuthenticated) {
+    return (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        color: 'var(--text-primary)',
+        background: 'var(--bg-primary)'
+      }}>
+        Loading...
+      </div>
+    );
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,10 +52,6 @@ function LoginForm() {
     try {
       const loginResponse = await api.login(username, password, role);
 
-      localStorage.setItem("isAuthenticated", "true");
-      localStorage.setItem("userRole", loginResponse.role);
-      localStorage.setItem("jwtToken", loginResponse.token);
-      
       const loggedUser = {
         id: loginResponse.id,
         username: loginResponse.username,
@@ -37,7 +60,8 @@ function LoginForm() {
         number: loginResponse.number,
         gender: loginResponse.gender,
       };
-      localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
+
+      login(loginResponse.token, loggedUser);
 
       showNotification(`${role.toUpperCase()} Login Successful`, "success");
 

@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { AttendanceContext } from "../context/AttendanceContext";
 import "../assets/css/AttendanceReportTable.css";
+import { useAuth } from "../context/AuthContext";
 
 const AttendanceReportTable = () => {
   const { state } = useContext(AttendanceContext);
-
-  const storedUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  const { user: storedUser } = useAuth();
 
   if (state.records.length === 0) {
     return <p className="no-data">No attendance records available</p>;

@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../assets/css/Registration.css";
 import { api } from "../services/api";
 import { useTheme } from "../context/ThemeContext";
+import { useAuth } from "../context/AuthContext";
 
 const Registration = () => {
   const navigate = useNavigate();
   const { showNotification, theme, toggleTheme } = useTheme();
+  const { isAuthenticated, role: userRole, loading } = useAuth();
+
+  useEffect(() => {
+    if (!loading && isAuthenticated) {
+      if (userRole === "admin") {
+        navigate("/adminDashboard", { replace: true });
+      } else {
+        navigate("/employeeDashboard", { replace: true });
+      }
+    }
+  }, [loading, isAuthenticated, userRole, navigate]);
 
   const [form, setForm] = useState({
     email: "",
@@ -17,6 +29,21 @@ const Registration = () => {
     password: "",
     confirmpassword: "",
   });
+
+  if (loading || isAuthenticated) {
+    return (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        color: 'var(--text-primary)',
+        background: 'var(--bg-primary)'
+      }}>
+        Loading...
+      </div>
+    );
+  }
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });

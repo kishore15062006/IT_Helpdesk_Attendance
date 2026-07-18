@@ -2,52 +2,31 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "../assets/css/EmployeeDashboard.css";
 import { useTheme } from "../context/ThemeContext";
-
+import { useAuth } from "../context/AuthContext";
 import { api } from "../services/api";
 
 const AdminDashboard = () => {
   const { theme, toggleTheme, showNotification } = useTheme();
+  const { user: authUser, logout, refreshUser } = useAuth();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const navigate = useNavigate();
-
-  const storedUser = JSON.parse(localStorage.getItem("loggedInUser"));
-  const [profile, setProfile] = useState(storedUser || {});
-
-  const fetchProfile = async () => {
-    if (!storedUser?.id) return;
-    try {
-      const fullProfile = await api.getUserProfile(storedUser.id);
-      if (fullProfile) {
-        const merged = { ...storedUser, ...fullProfile };
-        localStorage.setItem("loggedInUser", JSON.stringify(merged));
-        setProfile(merged);
-      }
-    } catch (e) {
-      console.error("Error loading profile details:", e);
-    }
-  };
+  const [profile, setProfile] = useState({});
 
   useEffect(() => {
-    if (!storedUser || storedUser.role !== "admin") {
-      navigate("/login");
-    } else {
-      fetchProfile();
+    if (authUser) {
+      setProfile(authUser);
     }
-  }, [storedUser?.id, navigate]);
+  }, [authUser]);
 
   const handleLogout = () => {
-    localStorage.removeItem("loggedInUser");
-    localStorage.removeItem("jwtToken");
-    localStorage.removeItem("isAuthenticated");
-    localStorage.removeItem("userRole");
+    logout();
     navigate("/login");
   };
 
   const handleSave = async () => {
     try {
-      const updated = await api.updateProfile(profile);
-      localStorage.setItem("loggedInUser", JSON.stringify(updated));
-      setProfile(updated);
+      await api.updateProfile(profile);
+      await refreshUser();
       showNotification("Profile updated successfully", "success");
       setIsDrawerOpen(false);
     } catch (err) {

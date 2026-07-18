@@ -157,6 +157,16 @@ public class UserController {
         return ResponseEntity.ok(employees);
     }
 
+    @GetMapping("/me")
+    public ResponseEntity<?> getMe() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof CustomUserDetails) {
+            CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+            return ResponseEntity.ok(userDetails.getUser());
+        }
+        return ResponseEntity.status(401).body("Not authenticated");
+    }
+
     @PutMapping("/update-profile")
     public ResponseEntity<?> updateProfile(@RequestBody User userProfile) {
         Optional<User> userOpt = userRepository.findById(userProfile.getId());

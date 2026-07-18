@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import "../assets/css/TicketStyles.css";
 import { api } from "../services/api";
 import { useTheme } from "../context/ThemeContext";
+import { useAuth } from "../context/AuthContext";
 
 const MyTickets = () => {
-  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  const { user: loggedInUser } = useAuth();
   const [myTickets, setMyTickets] = useState([]);
   const { showNotification } = useTheme();
 

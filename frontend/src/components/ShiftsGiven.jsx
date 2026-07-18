@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import "../assets/css/ShiftsGiven.css";
 import { api } from "../services/api";
+import { useAuth } from "../context/AuthContext";
 
 const ShiftsGiven = () => {
   const [myShifts, setMyShifts] = useState([]);
+  const { user } = useAuth();
 
   useEffect(() => {
     const updateShifts = async () => {
-      const user = JSON.parse(localStorage.getItem("loggedInUser"));
       if (!user) return;
 
       try {
@@ -27,7 +28,7 @@ const ShiftsGiven = () => {
     return () => {
       window.removeEventListener("focus", updateShifts);
     };
-  }, []);
+  }, [user]);
 
   return (
     <div className="my-shifts-container">
